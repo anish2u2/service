@@ -16,6 +16,7 @@
 		<servlet-api-version>3.0-alpha-1</servlet-api-version>
 		<resteasy-version>2.3-RC1</resteasy-version>
 		<spring-version>3.0.5.RELEASE</spring-version>
+		<hornet-queue>2.1.0.BETA1</hornet-queue>
 	</properties>
 
 	<dependencies>
@@ -99,6 +100,14 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
 			<version>${spring-version}</version>
+		</dependency>
+
+		<!-- JMS Config -->
+		<!-- https://mvnrepository.com/artifact/org.hornetq/hornetq-core -->
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-all</artifactId>
+			<version>5.14.2</version>
 		</dependency>
 
 	</dependencies>

@@ -4,6 +4,7 @@ import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 
 import org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher;
+import org.services.mq.MQServer;
 
 /**
  * This Servlet will serve for handling messaging over http.
@@ -19,6 +20,8 @@ public class HttpMQServlet extends HttpServletDispatcher {
 	public void init(ServletConfig config) throws ServletException {
 
 		super.init(config);
+		MQServer.getInstance().init();
+		MQServer.getInstance().test();
 	}
 
 	@Override
