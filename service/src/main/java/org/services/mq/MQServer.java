@@ -1,5 +1,7 @@
 package org.services.mq;
 
+import java.util.Locale;
+
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
 import javax.jms.MessageConsumer;
@@ -11,8 +13,14 @@ import javax.jms.TextMessage;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.services.contracts.Destroy;
 import org.services.contracts.Init;
+import org.services.contracts.mq.MQConnectionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.MessageSource;
+import org.springframework.stereotype.Component;
 
-public class MQServer implements Init, Destroy {
+@Component(value = "connectionFactory")
+public class MQServer implements Init, Destroy, MQConnectionFactory {
 
 	private static MQServer server;
 
@@ -20,9 +28,13 @@ public class MQServer implements Init, Destroy {
 
 	private Connection connection;
 
-	static {
-		getInstance().init();
-	}
+	@Autowired
+	@Qualifier("messageSource")
+	private MessageSource messageSource;
+
+	/*
+	 * static { getInstance().init(); }
+	 */
 
 	public static MQServer getInstance() {
 		if (server == null)
@@ -32,7 +44,8 @@ public class MQServer implements Init, Destroy {
 
 	public void init() {
 		try {
-			connectionFactory = new ActiveMQConnectionFactory("vm://localhost");
+			connectionFactory = new ActiveMQConnectionFactory(
+					messageSource.getMessage("service.mq.broker.url", null, Locale.ENGLISH));
 			System.out.println("Server Started..");
 		} catch (Exception ex) {
 			ex.printStackTrace();

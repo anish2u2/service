@@ -12,14 +12,12 @@ http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
 
 	<listener>
 		<listener-class>
-			org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap
-		</listener-class>
+			org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap</listener-class>
 	</listener>
 	<servlet>
 		<servlet-name>resteasy</servlet-name>
 		<servlet-class>
-			org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher
-		</servlet-class>
+			org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher</servlet-class>
 		<load-on-startup>2</load-on-startup>
 	</servlet>
 
@@ -47,5 +45,10 @@ http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
 		<servlet-name>mq</servlet-name>
 		<url-pattern>*.msg</url-pattern>
 	</servlet-mapping>
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/applicationContext.xml</param-value>
+	</context-param>
 
 </web-app>
