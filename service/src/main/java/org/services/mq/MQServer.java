@@ -88,7 +88,6 @@ public class MQServer implements Init, Destroy, MQConnectionFactory {
 		try {
 			connectionFactory = null;
 		} catch (Exception e) {
-
 			e.printStackTrace();
 		}
 	}
