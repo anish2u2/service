@@ -112,13 +112,14 @@
 
 	</dependencies>
 	<build>
-		<finalName>ROOT</finalName>
+		<finalName>service</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
 				<version>3.2.0</version>
 				<configuration>
+<!-- 				<outputDirectory>/webapp/</outputDirectory> -->
 <!-- 					<webappDirectory>/sample/servlet/container/deploy/directory</webappDirectory> -->
 				</configuration>
 			</plugin>
